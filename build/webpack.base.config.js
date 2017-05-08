@@ -5,7 +5,6 @@ var webpack = require('webpack')
 var path=require('path')
 var util=require('./util')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
-// var ImageminPlugin = require('imagemin-webpack-plugin').default
 //var HtmlWebpackEvent = require("./html-webpack-event")
 function resolve(dir) {
     return path.resolve(__dirname,'..',dir)

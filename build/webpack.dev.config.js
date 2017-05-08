@@ -17,7 +17,7 @@ module.exports = merge(webpackBaseConfig, {
             }
         }),
     ],
-    devServer: {
+    /*devServer: {
         port: 9000,
         //contentBase: "./dist",  //以dist为根目录提供文件
         contentBase: [resolve('dist'), resolve('dist/views/home/index')],
@@ -30,5 +30,5 @@ module.exports = merge(webpackBaseConfig, {
             ]
         },
         inline: true
-    }
+    }*/
 })
