@@ -5,7 +5,6 @@ var webpack = require('webpack')
 var path=require('path')
 var util=require('./util')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
-// var ImageminPlugin = require('imagemin-webpack-plugin').default
 //var HtmlWebpackEvent = require("./html-webpack-event")
 function resolve(dir) {
     return path.resolve(__dirname,'..',dir)
@@ -72,28 +71,34 @@ module.exports={
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loaders:[
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         query: {
                             limit: 10000,
                             name: 'img/[name].[hash:7].[ext]'
                         }
                     },
                     {
-                        //https://github.com/tcoopman/image-webpack-loader
                         loader: 'image-webpack-loader',
                         query: {
-                            guetzli: {
-                                quality: 95,
+                            gifsicle:{
+                                interlaced: false
                             },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            optipng: {
-                                optimizationLevel: 4,
+                            mozjpeg: {
+                                quality: 65,
                             },
                             pngquant: {
-                                quality: '75-90',
-                                speed: 3,
+                                quality: '65-90',
+                                speed: 4,
+                            },
+                            svgo: {
+                                plugins: [
+                                    {
+                                        removeViewBox: false,
+                                    },
+                                    {
+                                        removeEmptyAttrs: false,
+                                    }
+                                ]
                             }
                         }
                     }
