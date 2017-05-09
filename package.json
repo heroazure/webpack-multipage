@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev2": "webpack-dev-server --open --inline ./build/webpack.dev.config.js",
+    "server": "webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run del && webpack --progress --colors --config ./build/webpack.pro.config.js",
     "del": "rimraf ./dist",
     "dev": "npm run del && webpack --watch --progress --colors --config ./build/webpack.dev.config.js"
@@ -41,5 +41,8 @@
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.4",
     "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "vue": "^2.3.2"
   }
 }

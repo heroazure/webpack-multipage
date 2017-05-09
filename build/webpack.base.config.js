@@ -33,7 +33,7 @@ module.exports={
     entry:util.entry,
     output: {
         path: resolve('dist/'),
-        publicPath: '/dist/',
+        publicPath: '/',
         chunkFilename: 'js/[id].[hash].chunk.js',
         filename: 'js/[name].[hash].min.js'
     },
@@ -115,8 +115,12 @@ module.exports={
         ]
     },
     resolve: {
-        extensions: ['.js', '.less', '.css','.ejs'],
-        alias: {}
+        extensions: ['.js', '.less', '.css','.ejs','.html'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            'layout':resolve('src/layout'),
+            'assets':resolve('src/assets'),
+        }
     },
     plugins: plugins,
 }

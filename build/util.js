@@ -17,7 +17,7 @@ files.forEach(function(f){
     newEntries[name] = f
     HtmlWebpackPlugins.push(new HtmlWebpackPlugin({
         filename: resolve('dist/views/'+name+'/index.html'),
-        template: resolve('src/views/'+name+'/html.js'),
+        template: resolve('src/views/'+name+'/html'),
         inject: true,
         minify: {
             removeComments: true,
