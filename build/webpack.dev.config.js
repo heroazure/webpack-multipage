@@ -16,15 +16,15 @@ module.exports = merge(webpackBaseConfig, {
                 NODE_ENV: '"development"'
             }
         }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        port: 9000,
-        //contentBase: "./dist",  //以dist为根目录提供文件
+        port: 9900,
         open:true,
-        contentBase: [resolve('dist'), resolve('dist/views/home/index')],
+        contentBase: [resolve('dist')],
         historyApiFallback:{
             rewrites: [
-                //{ from: /^\/$/, to: '/views/home/index/index.html' },
+                { from: /^\/$/, to: '/views/home/index/index.html' },
                 { from: /^\/about$/, to: '/views/home/about/index.html' },
                 //{ from: /./, to: '/views/404.html' }
             ]

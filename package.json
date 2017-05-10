@@ -1,10 +1,10 @@
 {
-  "name": "webpack-ejs",
+  "name": "webpack-multipage",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --config ./build/webpack.dev.config.js",
+    "server": "npm run del && webpack-dev-server --config ./build/webpack.dev.config.js",
     "build": "npm run del && webpack --progress --colors --config ./build/webpack.pro.config.js",
     "del": "rimraf ./dist",
     "dev": "npm run del && webpack --watch --progress --colors --config ./build/webpack.dev.config.js"
