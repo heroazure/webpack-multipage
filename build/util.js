@@ -30,6 +30,6 @@ files.forEach(function(f){
 })
 
 module.exports={
-    entry:Object.assign({},newEntries,{vendor:['jquery']}),
+    entry:Object.assign({},newEntries,{vendor:['jquery','vue']}),
     HtmlWebpackPlugins:HtmlWebpackPlugins
 }

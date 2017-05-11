@@ -17,11 +17,11 @@ module.exports = merge(webpackBaseConfig, {
                 warnings: false
             }
         }),
-        new OptimizeCSSPlugin({
+        /*new OptimizeCSSPlugin({
             cssProcessorOptions: {
                 safe: true,
                 discardComments: {removeAll: true }
             }
-        })
+        })*/
     ]
 })

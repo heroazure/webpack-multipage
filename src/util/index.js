@@ -3,7 +3,7 @@
  */
 let obj={}
 obj.func1=()=>{
-
+    console.log('func1')
 }
 obj.attr=''
 
