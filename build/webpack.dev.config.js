@@ -30,6 +30,12 @@ module.exports = merge(webpackBaseConfig, {
             ]
         },
         inline: true,
-        hot:true
+        hot:true,
+        proxy: {
+            '/api': {
+                target: 'http://erptest/saas/index.php/Api',
+                secure: false
+            }
+        }
     }
 })
