@@ -10,10 +10,10 @@ function resolve(dir) {
     return path.resolve(__dirname,'..',dir)
 }
 const extractTextViews = new ExtractTextPlugin({
-    filename:"css/[name].[hash].css",
+    filename:"css/[name].[contenthash].css",
     allChunks: true
 })
-const extractTextCommon = new ExtractTextPlugin('css/common.[hash].css')
+const extractTextCommon = new ExtractTextPlugin('css/common.[contenthash].css')
 
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -34,8 +34,8 @@ module.exports={
     output: {
         path: resolve('dist/'),
         publicPath: '/',
-        chunkFilename: 'js/[id].[hash].chunk.js',
-        filename: 'js/[name].[hash].min.js'
+        chunkFilename: 'js/[id].[chunkhash].chunk.js',
+        filename: 'js/[name].[chunkhash].min.js'
     },
     module: {
         rules: [
