@@ -35,7 +35,7 @@ module.exports={
         path: resolve('dist/'),
         publicPath: '/',
         chunkFilename: 'js/[id].[chunkhash].chunk.js',
-        filename: 'js/[name].[chunkhash].min.js'
+        filename: 'js/[name].[hash].min.js'
     },
     module: {
         rules: [
