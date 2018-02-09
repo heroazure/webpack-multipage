@@ -4,10 +4,12 @@
 var webpack = require('webpack')
 var path=require('path')
 var webpackBaseConfig = require('./webpack.base.config')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 var merge = require('webpack-merge')
-function resolve(dir) {
-    return path.resolve(__dirname,'..',dir)
-}
+// add hot-reload related code to entry chunks
+Object.keys(webpackBaseConfig.entry).forEach(function (name) {
+    webpackBaseConfig.entry[name] = [path.resolve(__dirname,'./dev-client.js')].concat(webpackBaseConfig.entry[name])
+})
 module.exports = merge(webpackBaseConfig, {
     //watch:true,
     plugins: [
@@ -16,26 +18,7 @@ module.exports = merge(webpackBaseConfig, {
                 NODE_ENV: '"development"'
             }
         }),
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    devServer: {
-        port: 9900,
-        open:true,
-        contentBase: [resolve('dist')],
-        historyApiFallback:{
-            rewrites: [
-                { from: /^\/$/, to: '/views/home/index/index.html' },
-                { from: /^\/about$/, to: '/views/home/about/index.html' },
-                //{ from: /./, to: '/views/404.html' }
-            ]
-        },
-        inline: true,
-        hot:true,
-        proxy: {
-            '/api': {
-                target: 'http://erptest/saas/index.php/Api',
-                secure: false
-            }
-        }
-    }
+        new webpack.HotModuleReplacementPlugin(),
+        new FriendlyErrorsPlugin()
+    ]
 })
