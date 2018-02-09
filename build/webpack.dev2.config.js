@@ -4,6 +4,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const glob=require('glob')
+process.env.NODE_ENV='development'
 const webpackBaseConfig = require('./webpack.base.config')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const merge = require('webpack-merge')
@@ -25,7 +26,6 @@ rewrites.push({
 })
 
 module.exports = merge(webpackBaseConfig, {
-    //watch:true,
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

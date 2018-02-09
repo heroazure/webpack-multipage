@@ -19,3 +19,9 @@
 - 通过.postcssrc.js文件配置样式的预处理，解决所有浏览器的样式兼容问题
 - 生产环境样式等资源压缩处理
 - 资源文件自动加版本号，解决浏览器缓存问题
+
+### 各个页面的路由配置
+
+- build/webpack.dev2.config.js该文件下rewrites字段配置
+- 例如src/views/home/index文件夹对应的html页面的路由为localhost:9900/home/index
+- 例如src/views/login文件夹对应的html页面的路由为localhost:9900/login

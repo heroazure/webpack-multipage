@@ -2,18 +2,20 @@
  * Created by xuwei on 2017/4/18.
  */
 var webpack = require('webpack')
-var path=require('path')
-var util=require('./util')
+var path = require('path')
+var util = require('./util')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 //var HtmlWebpackEvent = require("./html-webpack-event")
 function resolve(dir) {
-    return path.resolve(__dirname,'..',dir)
+    return path.resolve(__dirname, '..', dir)
 }
 const extractTextViews = new ExtractTextPlugin({
-    filename:"css/[name].[contenthash].css",
+    filename: process.env.NODE_ENV==='development'
+        ?"css/[name].css":"css/[name].[contenthash].css",
     allChunks: true
 })
-const extractTextCommon = new ExtractTextPlugin('css/common.[contenthash].css')
+const extractTextCommon = new ExtractTextPlugin(process.env.NODE_ENV==='development'
+    ?'css/common.css':'css/common.[contenthash].css')
 
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -28,14 +30,14 @@ var plugins = [
     extractTextViews,
     //new HtmlWebpackEvent()
 ]
-plugins=plugins.concat(util.HtmlWebpackPlugins)
-module.exports={
-    entry:util.entry,
+plugins = plugins.concat(util.HtmlWebpackPlugins)
+module.exports = {
+    entry: util.entry,
     output: {
         path: resolve('dist/'),
         publicPath: '/',
-        chunkFilename: 'js/[id].[chunkhash].chunk.js',
-        filename: 'js/[name].[hash].min.js'
+        chunkFilename: 'js/[id].chunk.js',
+        filename: 'js/[name].js'
     },
     module: {
         rules: [
@@ -54,7 +56,7 @@ module.exports={
                 include: [resolve('src/views')],
                 exclude: /node_modules/,
                 use: extractTextViews.extract({
-                    use: ['css-loader','postcss-loader', 'less-loader'],
+                    use: ['css-loader', 'postcss-loader', 'less-loader'],
                     fallback: 'style-loader'
                 })
             },
@@ -63,13 +65,13 @@ module.exports={
                 include: [resolve('src/assets/css')],
                 exclude: /node_modules/,
                 use: extractTextCommon.extract({
-                    use: ['css-loader','postcss-loader', 'less-loader'],
+                    use: ['css-loader', 'postcss-loader', 'less-loader'],
                     fallback: 'style-loader'
                 })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loaders:[
+                loaders: [
                     {
                         loader: 'url-loader',
                         query: {
@@ -80,7 +82,7 @@ module.exports={
                     {
                         loader: 'image-webpack-loader',
                         query: {
-                            gifsicle:{
+                            gifsicle: {
                                 interlaced: false
                             },
                             mozjpeg: {
@@ -115,11 +117,11 @@ module.exports={
         ]
     },
     resolve: {
-        extensions: ['.js', '.less', '.css','.ejs','.html'],
+        extensions: ['.js', '.less', '.css', '.ejs', '.html'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'layout':resolve('src/layout'),
-            'assets':resolve('src/assets'),
+            'layout': resolve('src/layout'),
+            'assets': resolve('src/assets'),
         }
     },
     plugins: plugins,
