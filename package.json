@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "del": "rimraf ./dist",
+    "del": "rm -rf ./dist",
     "dev": "npm run del && webpack-dev-server --config ./build/webpack.dev2.config.js",
     "build": "npm run del && webpack --progress --colors --config ./build/webpack.pro.config.js",
     "start": "npm run dev",
