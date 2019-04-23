@@ -1,4 +1,4 @@
-# home-page
+# webpack-multipage
 
 ## Project setup
 ```
