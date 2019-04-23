@@ -10,7 +10,7 @@ yarn install
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production11
 ```
 yarn run build
 ```
