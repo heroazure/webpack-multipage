@@ -1,6 +1,6 @@
 # webpack-multipage
 
-#### webpack多页面项目配置
+#### webpack多页面项目配置11
 
 - 约定页面都放在views文件夹下，可以多级子目录
 - 约定公共样式放置在src/assets下
